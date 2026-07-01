@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="محفظة المهندس لطفي علي سالم مؤمن - مهندس مدني ومساحة ميداني بخبرة تزيد عن 8 سنوات في مشاريع الطرق والبنية التحتية، ومؤسس منصة نيو فيوتشر.">
+    <title>م. لطفي علي مؤمن | محفظة أعمال هندسية</title>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           CSS Variables & Tokens
+           ========================================================================== */
+        :root {
+            /* Color Palette */
+            --bg-dark: #0f172a;        /* Deep slate background */
+            --bg-darker: #080f1e;      /* Darker slate for footer */
+            --primary-neon: #00f0ff;   /* Neon Cyan */
+            --primary-neon-dim: rgba(0, 240, 255, 0.2);
+            --structural-gray: #334155;
+            --structural-gray-light: #475569;
+            --metallic-silver: #f8fafc;
+            --metallic-silver-dark: #94a3b8;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            
+            /* Typography */
+            --font-main: 'Cairo', sans-serif;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+           Reset & Global Styles
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--metallic-silver);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Engineering Grid Background */
+            background-image: 
+                linear-gradient(var(--glass-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        ::selection {
+            background: var(--primary-neon);
+            color: var(--bg-dark);
+        }
+
+        /* ==========================================================================
+           Layout & Typography
+           ========================================================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section {
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--metallic-silver);
+            position: relative;
+            display: block;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-neon);
+            border-radius: 2px;
+            transition: width var(--transition-fast);
+        }
+
+        .section-title:hover::after {
+            width: 120px;
+        }
+
+        /* Glass Card Component */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--glass-shadow);
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon-dim);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.08);
+        }
+
+        /* ==========================================================================
+           Navigation
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: padding var(--transition-fast);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-neon);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--metallic-silver);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-neon);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-neon);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: var(--metallic-silver);
+            transition: var(--transition-fast);
+        }
+
+        /* ==========================================================================
+           Hero Section
+           ========================================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .profile-img-container {
+            margin-bottom: 2rem;
+            animation: floatProfile 5s ease-in-out infinite;
+        }
+
+        @keyframes floatProfile {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+            border: 4px solid var(--primary-neon);
+            box-shadow: 0 0 25px var(--primary-neon-dim);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Updated Title Effect: Metallic Gradient */
+        .metallic-text {
+            font-size: clamp(1.8rem, 4vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            padding-bottom: 10px;
+            background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 50%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--primary-neon);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform var(--transition-fast);
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        .masonry-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            color: var(--metallic-silver-dark);
+            margin-bottom: 3rem;
+        }
+
+        /* Dual CTA */
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .cta-button.primary {
+            color: var(--bg-dark);
+            background-color: var(--primary-neon);
+            box-shadow: 0 0 20px var(--primary-neon-dim);
+            border: 2px solid var(--primary-neon);
+        }
+
+        .cta-button.primary:hover {
+            background-color: transparent;
+            color: var(--primary-neon);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            color: var(--metallic-silver);
+            background-color: transparent;
+            border: 2px solid var(--metallic-silver-dark);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: #ff0000;
+            color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary:hover .yt-icon path {
+            stroke: #ff0000; /* SVG is stroke-based */
+        }
+        
+        .yt-icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            transition: stroke var(--transition-fast);
+        }
+
+        /* ==========================================================================
+           About Section
+           ========================================================================== */
+        .about-content p {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: var(--metallic-silver);
+            text-align: justify;
+        }
+
+        /* ==========================================================================
+           Services Section
+           ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-top: 4px solid var(--structural-gray-light);
+            height: 100%;
+        }
+
+        .service-card:hover {
+            border-top-color: var(--primary-neon);
+        }
+
+        .service-icon {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--metallic-silver);
+            flex-grow: 1;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: var(--primary-neon);
+            border: 1px solid var(--primary-neon);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            width: 100%;
+        }
+
+        .service-btn:hover {
+            background: var(--primary-neon);
+            color: var(--bg-dark);
+        }
+
+        /* ==========================================================================
+           Experience Section (Timeline)
+           ========================================================================== */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 24px;
+            width: 2px;
+            background: var(--structural-gray-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-right: 70px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: 15px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-dark);
+            border: 4px solid var(--primary-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--primary-neon-dim);
+            z-index: 2;
+            transition: background var(--transition-fast);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--primary-neon);
+        }
+
+        .timeline-content {
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -7px;
+            width: 14px;
+            height: 14px;
+            background: var(--glass-bg);
+            border-top: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            transform: rotate(45deg);
+            transition: border-color var(--transition-fast);
+        }
+
+        .timeline-item:hover .timeline-content::after {
+            border-color: var(--primary-neon-dim);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            color: var(--primary-neon);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--metallic-silver);
+            line-height: 1.4;
+        }
+
+        .timeline-content p {
+            color: var(--metallic-silver-dark);
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           Gallery Section
+           ========================================================================== */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+            background: var(--bg-dark);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon);
+            z-index: 2;
+        }
+
+        .masonry-item:hover img {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================================================
+           Footer
+           ========================================================================== */
+        .site-footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .copyright {
+            color: var(--metallic-silver-dark);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--metallic-silver);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            color: var(--primary-neon);
+        }
+
+        .social-icon {
+            stroke: var(--primary-neon);
+        }
+
+        /* ==========================================================================
+           Animations
+           ========================================================================== */
+        .fade-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           Responsive Design
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--glass-border);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .masonry-grid {
+                column-count: 1;
+            }
+
+            .timeline::before {
+                right: 15px;
+            }
+            
+            .timeline-item {
+                padding-right: 45px;
+            }
+            
+            .timeline-dot {
+                right: 6px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .cta-button {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">م. لطفي مؤمن</a>
+            <button class="mobile-menu-btn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">من أنا</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#experience">السجل المهني</a></li>
+                <li><a href="#gallery">معرض الأعمال</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="profile-img-container fade-element">
+                <img src="profile.jpg" alt="المهندس لطفي مؤمن" class="profile-img">
+            </div>
+            <h1 class="metallic-text">م. لطفي علي مؤمن</h1>
+            <h2 class="subtitle">مهندس مدني ومساحة ميداني | مؤسس منصة "نيو فيوتشر"</h2>
+            <div class="cta-group fade-element">
+                <a href="https://wa.me/967773725655" class="cta-button primary" target="_blank" rel="noopener noreferrer">طلب خدمة هندسية</a>
+                <a href="https://www.youtube.com/@NewFutureEng" class="cta-button secondary yt-btn" target="_blank" rel="noopener noreferrer">
+                    <svg class="yt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 7.1C2.6 5 4.5 3.5 6.7 3.5h10.6c2.2 0 4.1 1.5 4.2 3.6l.3 4.9-.3 4.9c-.1 2.1-2 3.6-4.2 3.6H6.7c-2.2 0-4.1-1.5-4.2-3.6l-.3-4.9.3-4.9z"/>
+                        <path d="m10 15 5-3-5-3v6z"/>
+                    </svg>
+                    شاهد شروحاتنا الميدانية
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">من أنا</h2>
+            <div class="about-content glass-card fade-element">
+                <p>
+                    مهندس مدني يمني بخبرة تزيد عن 8 سنوات في التنفيذ الميداني لمشاريع الطرق والبنية التحتية. متخصص في الرفع المساحي الدقيق، وحساب الكميات، والإشراف الفني. أدمج بين صرامة الميدان وصناعة المحتوى لسد الفجوة بين التعليم الأكاديمي والواقع العملي، وكسر حاجز الخوف لدى المهندسين.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paid Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2 class="section-title">الخدمات الهندسية والمساحية</h2>
+            <div class="services-grid">
+                <!-- Service 1: Surveying -->
+                <article class="service-card glass-card fade-element">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 1 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
+                    </div>
+                    <h3>الرفع المساحي الطبوغرافي الدقيق</h3>
+                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
+                </article>
+                <!-- Service 2: Civil Engineering -->
+                <article class="service-card glass-card fade-element">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    </div>
+                    <h3>توقيع المحاور والمنشآت الهندسية بالموقع</h3>
+                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
+                </article>
+                <!-- Service 3: Quantity Surveying -->
+                <article class="service-card glass-card fade-element">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                    </div>
+                    <h3>حساب كميات الحفر والردم والطبقات الإنشائية</h3>
+                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
+                </article>
+                <!-- Service 4: Consulting -->
+                <article class="service-card glass-card fade-element">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0"/><path d="M14 6h0a6 6 0 0 1 6 6v3"/></svg>
+                    </div>
+                    <h3>الاستشارات الفنية لمشاريع البنية التحتية</h3>
+                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Projects Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <h2 class="section-title">السجل المهني والمشاريع</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">يوليو 2025 – فبراير 2026</span>
+                        <h3>مهندس مشروع ومساح | مؤسسة علي حسين مبارك وإخوانه</h3>
+                        <p>الإشراف الفني والميداني الشامل على مشروع سفلتة طريق عقبة الحبيب شهاب الدين - المرحلة الأولى بمديرية تريم.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">أكتوبر 2023 – مايو 2025</span>
+                        <h3>مهندس استشاري مساحة | صندوق صيانة الطرق - عدن</h3>
+                        <p>استشاري مساحة في مشروع تأهيل الشوارع الحضرية بمديرية سيئون.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">فبراير 2023 – سبتمبر 2023</span>
+                        <h3>مهندس مشروع | محافظة حضرموت - المكلا</h3>
+                        <p>إدارة وتنفيذ مشروع بناء عمارة سكنية.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">مارس 2021 – يناير 2023</span>
+                        <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
+                        <p>سفلتة طريق عقبة رحاب – الفرضحة بطول 33كم في تضاريس جبلية وعرة.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">نوفمبر 2019 – مارس 2021</span>
+                        <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
+                        <p>سفلتة طريق عقبة كتبة – السلاسل - حوارم المرحلة الأولى بطول 14كم.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">أكتوبر 2018 – نوفمبر 2019</span>
+                        <h3>مهندس تصميم ومساحة وإشراف | مجموعة العمودي للمقاولات</h3>
+                        <p>الصيانة الطارئة لطريق عصم – ثمود – رماه بطول 260كم.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">أغسطس 2018 – نوفمبر 2018</span>
+                        <h3>مهندس تصميم ومساحة وإشراف | عمل خاص</h3>
+                        <p>مشروع الصرف الصحي الاسعافي لمسجد البقيع.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">أبريل 2018 – يوليو 2018</span>
+                        <h3>مهندس مساح | لجنة محلية</h3>
+                        <p>مشروع الصرف الصحي الاسعافي بمدينة تريم بطول 4كم.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2017 – مارس 2018</span>
+                        <h3>مهندس مشرف ومصمم ومساح | مكتب تكنو عمارة للاستشارات الهندسية</h3>
+                        <p>وتدريب المكاتب على أجهزة Total Station.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Field Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <h2 class="section-title">معرض الأعمال الميدانية</h2>
+            <div class="masonry-grid">
+                <div class="masonry-item fade-element">
+                    <img src="img1.jpg" alt="مشروع عقبة كتبة" loading="lazy">
+                    <div class="gallery-caption">مشروع عقبة كتبة</div>
+                </div>
+                <div class="masonry-item fade-element">
+                    <img src="img2.jpg" alt="طريق عصم - ثمود - رماه" loading="lazy">
+                    <div class="gallery-caption">طريق عصم - ثمود - رماه</div>
+                </div>
+                <div class="masonry-item fade-element">
+                    <img src="img3.jpg" alt="مشروع سفلتة طريق عقبة شهاب" loading="lazy">
+                    <div class="gallery-caption">مشروع سفلتة طريق عقبة شهاب</div>
+                </div>
+                <div class="masonry-item fade-element">
+                    <img src="img4.jpg" alt="مشروع عقبة رحاب" loading="lazy">
+                    <div class="gallery-caption">مشروع عقبة رحاب</div>
+                </div>
+                <div class="masonry-item fade-element">
+                    <img src="img5.jpg" alt="تأهيل الشوارع الحضرية بمدينة سيئون" loading="lazy">
+                    <div class="gallery-caption">الشوارع الحضرية - سيئون</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content fade-element">
+                <p class="copyright">© 2026 مكتب وقناة نيو فيوتشر الهندسية. جميع الحقوق محفوظة.</p>
+                <div class="social-links">
+                    <a href="https://youtube.com/@NewFutureEng" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2.5 7.1C2.6 5 4.5 3.5 6.7 3.5h10.6c2.2 0 4.1 1.5 4.2 3.6l.3 4.9-.3 4.9c-.1 2.1-2 3.6-4.2 3.6H6.7c-2.2 0-4.1-1.5-4.2-3.6l-.3-4.9.3-4.9z"/>
+                            <path d="m10 15 5-3-5-3v6z"/>
+                        </svg>
+                        YouTube: @NewFutureEng
+                    </a>
+                    <a href="mailto:A.LOTFE.Z@gmail.com" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        Email: A.LOTFE.Z@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    mobileMenuBtn.classList.toggle('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
+                });
+
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // 2. Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Smooth Scrolling for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        // Adjust scroll position for fixed navbar
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 4. Scroll Reveal Animations using Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: Stop observing once revealed
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-element');
+            fadeElements.forEach(el => {
+                fadeObserver.observe(el);
+            });
+
+            // 5. ScrollSpy - Highlight Active Section in Navbar
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    // Add navbar height + some buffer for detection
+                    const sectionTop = section.offsetTop - 150; 
+                    const id = section.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        current = id;
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
