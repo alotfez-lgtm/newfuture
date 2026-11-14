@@ -3,1046 +3,1534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="محفظة المهندس لطفي علي سالم مؤمن - مهندس مدني ومساحة ميداني بخبرة تزيد عن 8 سنوات في مشاريع الطرق والبنية التحتية، ومؤسس منصة نيو فيوتشر.">
-    <title>م. لطفي علي مؤمن | محفظة أعمال هندسية</title>
-    <!-- Google Fonts: Cairo -->
+    <title>م. لطفي علي مؤمن | منصة ومكتب نيو فيوتشر للخدمات الهندسية والمساحية</title>
+    <meta name="description" content="الموقع الرسمي للمهندس لطفي علي سالم مؤمن - مهندس مدني واستشاري مساحة ميداني بخبرة +8 سنوات في مشاريع الطرق والبنية التحتية والإنشاءات، ومؤسس منصة نيو فيوتشر الهندسية.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================================================
-           CSS Variables & Tokens
-           ========================================================================== */
         :root {
-            /* Color Palette */
-            --bg-dark: #0f172a;        /* Deep slate background */
-            --bg-darker: #080f1e;      /* Darker slate for footer */
-            --primary-neon: #00f0ff;   /* Neon Cyan */
-            --primary-neon-dim: rgba(0, 240, 255, 0.2);
-            --structural-gray: #334155;
-            --structural-gray-light: #475569;
-            --metallic-silver: #f8fafc;
-            --metallic-silver-dark: #94a3b8;
-            
-            /* Glassmorphism */
-            --glass-bg: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            
-            /* Typography */
-            --font-main: 'Cairo', sans-serif;
-            
-            /* Transitions */
-            --transition-fast: 0.3s ease;
-            --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-dark: #040B1A;
+            --bg-navy: #071630;
+            --bg-card: #0C2144;
+            --bg-card-hover: #102A56;
+            --cyan: #00E5FF;
+            --cyan-glow: rgba(0, 229, 255, 0.35);
+            --amber: #FF8C00;
+            --gold: #E5B842;
+            --gold-glow: rgba(229, 184, 66, 0.3);
+            --text-light: #F8FAFC;
+            --text-muted: #CBD5E1;
+            --border-gold: rgba(229, 184, 66, 0.3);
+            --border-cyan: rgba(0, 229, 255, 0.22);
+            --success: #10B981;
         }
 
-        /* ==========================================================================
-           Reset & Global Styles
-           ========================================================================== */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-main);
+            font-family: 'Cairo', 'Tajawal', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--metallic-silver);
-            line-height: 1.6;
+            color: var(--text-light);
+            line-height: 1.75;
             overflow-x: hidden;
-            /* Engineering Grid Background */
             background-image: 
-                linear-gradient(var(--glass-border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
+                radial-gradient(circle at 10% 15%, rgba(0, 229, 255, 0.06), transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(229, 184, 66, 0.05), transparent 35%),
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
             background-attachment: fixed;
         }
 
         ::selection {
-            background: var(--primary-neon);
+            background: var(--cyan);
             color: var(--bg-dark);
         }
 
-        /* ==========================================================================
-           Layout & Typography
-           ========================================================================== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .section {
-            position: relative;
-            z-index: 10;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--metallic-silver);
-            position: relative;
-            display: block;
-            letter-spacing: -0.5px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 60px;
-            height: 4px;
-            background: var(--primary-neon);
-            border-radius: 2px;
-            transition: width var(--transition-fast);
-        }
-
-        .section-title:hover::after {
-            width: 120px;
-        }
-
-        /* Glass Card Component */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: var(--glass-shadow);
-            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-neon-dim);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.08);
-        }
-
-        /* ==========================================================================
-           Navigation
-           ========================================================================== */
-        .navbar {
+        /* Scroll Progress Bar */
+        #scroll-progress {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.85);
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--gold), var(--amber));
+            width: 0%;
+            z-index: 2000;
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* Header / Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(4, 11, 26, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: padding var(--transition-fast);
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            border-bottom: 1px solid var(--border-gold);
+            padding: 0.85rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .nav-logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-neon);
+        header.scrolled {
+            padding: 0.6rem 5%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
             text-decoration: none;
-            letter-spacing: 0.5px;
+            color: var(--text-light);
         }
 
-        .nav-links {
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--cyan);
+            background: radial-gradient(circle, #0d2854, var(--bg-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.15rem;
+            color: var(--cyan);
+            box-shadow: 0 0 15px var(--cyan-glow);
+            position: relative;
+        }
+
+        .brand-logo::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            border: 1px dashed var(--gold);
+            opacity: 0.6;
+        }
+
+        .brand-text h1 {
+            font-size: 1.22rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-size: 0.78rem;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+        }
+
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .nav-links a {
-            color: var(--metallic-silver);
+        nav a {
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color var(--transition-fast);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.25s;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.3rem 0;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-neon);
-        }
-
-        .nav-links a::after {
+        nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-neon);
-            transition: width var(--transition-fast);
+            background: var(--cyan);
+            transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after, .nav-links a.active::after {
+        nav a:hover, nav a.active {
+            color: var(--cyan);
+        }
+
+        nav a:hover::after, nav a.active::after {
             width: 100%;
         }
 
-        .mobile-menu-btn {
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), #c8961e);
+            color: var(--bg-dark) !important;
+            padding: 0.48rem 1.25rem !important;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(229, 184, 66, 0.5);
+        }
+
+        .menu-toggle {
             display: none;
             background: none;
-            border: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 1001;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 30px;
-            height: 2px;
-            background-color: var(--metallic-silver);
-            transition: var(--transition-fast);
-        }
-
-        /* ==========================================================================
-           Hero Section
-           ========================================================================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 0 2rem;
-            margin-top: 2rem;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-        }
-
-        .profile-img-container {
-            margin-bottom: 2rem;
-            animation: floatProfile 5s ease-in-out infinite;
-        }
-
-        @keyframes floatProfile {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: top center;
-            border: 4px solid var(--primary-neon);
-            box-shadow: 0 0 25px var(--primary-neon-dim);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.4);
-        }
-
-        /* Updated Title Effect: Metallic Gradient */
-        .metallic-text {
-            font-size: clamp(1.8rem, 4vw, 4.5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            padding-bottom: 10px;
-            background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 50%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
-            white-space: nowrap;
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            color: var(--primary-neon);
-            padding: 1rem;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transform: translateY(100%);
-            transition: transform var(--transition-fast);
-            backdrop-filter: blur(4px);
-            z-index: 10;
-        }
-
-        .masonry-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        .hero-content .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 400;
-            color: var(--metallic-silver-dark);
-            margin-bottom: 3rem;
-        }
-
-        /* Dual CTA */
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 0.4rem 0.7rem;
+            border-radius: 8px;
             font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 4px;
-            transition: all var(--transition-fast);
-            text-decoration: none;
+            cursor: pointer;
         }
 
-        .cta-button.primary {
-            color: var(--bg-dark);
-            background-color: var(--primary-neon);
-            box-shadow: 0 0 20px var(--primary-neon-dim);
-            border: 2px solid var(--primary-neon);
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5% 4.5rem;
+            background: radial-gradient(circle at 20% 25%, rgba(0, 229, 255, 0.13), transparent 45%),
+                        radial-gradient(circle at 80% 70%, rgba(229, 184, 66, 0.1), transparent 45%),
+                        linear-gradient(180deg, rgba(7, 22, 48, 0.85) 0%, rgba(4, 11, 26, 0.95) 100%);
+            border-bottom: 1px solid var(--border-gold);
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-button.primary:hover {
-            background-color: transparent;
-            color: var(--primary-neon);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
-            transform: translateY(-2px);
+        .hero-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .cta-button.secondary {
-            color: var(--metallic-silver);
-            background-color: transparent;
-            border: 2px solid var(--metallic-silver-dark);
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 184, 66, 0.12);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.35rem 1.15rem;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 0 20px rgba(229, 184, 66, 0.15);
         }
 
-        .cta-button.secondary:hover {
-            border-color: #ff0000;
-            color: #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-            transform: translateY(-2px);
+        .hero-content h2 {
+            font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 0.45rem;
+            color: #fff;
+            letter-spacing: -0.5px;
         }
 
-        .cta-button.secondary:hover .yt-icon path {
-            stroke: #ff0000; /* SVG is stroke-based */
-        }
-        
-        .yt-icon {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            transition: stroke var(--transition-fast);
+        .hero-content h3 {
+            font-size: clamp(1.1rem, 2.1vw, 1.45rem);
+            color: var(--cyan);
+            font-weight: 800;
+            margin-bottom: 1.3rem;
         }
 
-        /* ==========================================================================
-           About Section
-           ========================================================================== */
-        .about-content p {
-            font-size: 1.25rem;
-            line-height: 2;
-            color: var(--metallic-silver);
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
             text-align: justify;
         }
 
-        /* ==========================================================================
-           Services Section
-           ========================================================================== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .service-card {
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0.85rem 1.65rem;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.98rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), #d99b16);
+            color: var(--bg-dark);
+            box-shadow: 0 8px 22px var(--gold-glow);
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 12px 28px rgba(229, 184, 66, 0.45);
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, var(--cyan), #00b0ff);
+            color: var(--bg-dark);
+            box-shadow: 0 8px 22px var(--cyan-glow);
+        }
+
+        .btn-cyan:hover {
+            box-shadow: 0 12px 28px rgba(0, 229, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-light);
+            border: 1px solid var(--border-cyan);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        /* Hero Profile Visual with Surveying Reticle */
+        .hero-profile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            border-top: 4px solid var(--structural-gray-light);
-            height: 100%;
+            position: relative;
         }
 
-        .service-card:hover {
-            border-top-color: var(--primary-neon);
-        }
-
-        .service-icon {
-            margin-bottom: 1.5rem;
+        .profile-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 60px;
         }
 
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: var(--metallic-silver);
-            flex-grow: 1;
+        .reticle-ring {
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 229, 255, 0.45);
+            animation: spinSlow 28s linear infinite;
+            pointer-events: none;
         }
 
-        .service-btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: transparent;
-            color: var(--primary-neon);
-            border: 1px solid var(--primary-neon);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all var(--transition-fast);
-            width: 100%;
+        .reticle-ring-inner {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(229, 184, 66, 0.4);
+            pointer-events: none;
         }
 
-        .service-btn:hover {
-            background: var(--primary-neon);
-            color: var(--bg-dark);
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        /* ==========================================================================
-           Experience Section (Timeline)
-           ========================================================================== */
-        .timeline {
+        .profile-frame {
+            width: 275px;
+            height: 275px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.3);
+            overflow: hidden;
+            background: var(--bg-card);
             position: relative;
-            max-width: 900px;
+            z-index: 2;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-frame:hover img {
+            transform: scale(1.06);
+        }
+
+        .floating-chip {
+            position: absolute;
+            background: rgba(7, 22, 48, 0.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 0.95rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #fff;
+            z-index: 3;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chip-top {
+            top: 8px;
+            right: -10px;
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .chip-bottom {
+            bottom: 12px;
+            left: -10px;
+            color: var(--gold);
+        }
+
+        .profile-caption {
+            margin-top: 1.4rem;
+            text-align: center;
+            background: rgba(12, 33, 68, 0.85);
+            border: 1px solid var(--border-gold);
+            padding: 0.48rem 1.35rem;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        /* Stats Strip */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.3rem;
+            max-width: 1180px;
+            margin: -2.3rem auto 2.5rem;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-box {
+            background: linear-gradient(145deg, var(--bg-card), var(--bg-navy));
+            border: 1px solid var(--border-gold);
+            padding: 1.4rem 1rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-box span {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* General Sections */
+        section {
+            padding: 4.2rem 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 24px;
-            width: 2px;
-            background: var(--structural-gray-light);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-right: 70px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            right: 15px;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background: var(--bg-dark);
-            border: 4px solid var(--primary-neon);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--primary-neon-dim);
-            z-index: 2;
-            transition: background var(--transition-fast);
-        }
-
-        .timeline-item:hover .timeline-dot {
-            background: var(--primary-neon);
-        }
-
-        .timeline-content {
-            position: relative;
-        }
-
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -7px;
-            width: 14px;
-            height: 14px;
-            background: var(--glass-bg);
-            border-top: 1px solid var(--glass-border);
-            border-right: 1px solid var(--glass-border);
-            transform: rotate(45deg);
-            transition: border-color var(--transition-fast);
-        }
-
-        .timeline-item:hover .timeline-content::after {
-            border-color: var(--primary-neon-dim);
-        }
-
-        .timeline-date {
-            display: inline-block;
-            color: var(--primary-neon);
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--metallic-silver);
-            line-height: 1.4;
-        }
-
-        .timeline-content p {
-            color: var(--metallic-silver-dark);
-            font-size: 1.1rem;
-        }
-
-        /* ==========================================================================
-           Gallery Section
-           ========================================================================== */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 1.5rem;
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
-            position: relative;
-            border-radius: 8px;
-            border: 1px solid var(--glass-border);
-            overflow: hidden;
-            transition: transform var(--transition-fast), border-color var(--transition-fast);
-            background: var(--bg-dark);
-        }
-
-        .masonry-item img {
-            width: 100%;
-            display: block;
-            filter: grayscale(100%) contrast(1.1);
-            transition: filter 0.5s ease, transform 0.5s ease;
-        }
-
-        .masonry-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-neon);
-            z-index: 2;
-        }
-
-        .masonry-item:hover img {
-            filter: grayscale(0%) contrast(1);
-            transform: scale(1.05);
-        }
-
-        /* ==========================================================================
-           Footer
-           ========================================================================== */
-        .site-footer {
-            background: var(--bg-darker);
-            border-top: 1px solid var(--glass-border);
-            padding: 4rem 2rem;
+        .section-header {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .footer-content {
+        .section-header h2 {
+            font-size: clamp(1.75rem, 3vw, 2.2rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 span {
+            color: var(--gold);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* Technical Arsenal / Software Skills Bar */
+        .skills-container {
+            background: rgba(12, 33, 68, 0.6);
+            border: 1px solid var(--border-cyan);
+            border-radius: 18px;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+
+        .skills-title {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--cyan);
+            margin-bottom: 1.4rem;
+        }
+
+        .skills-pills {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.85rem;
+        }
+
+        .skill-pill {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-gold);
+            color: var(--text-light);
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            transition: all 0.25s;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 229, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
             gap: 1.5rem;
         }
 
-        .copyright {
-            color: var(--metallic-silver-dark);
-            font-size: 1.1rem;
+        .service-card {
+            background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-navy) 100%);
+            border: 1px solid var(--border-cyan);
+            border-radius: 16px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .social-links {
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan), var(--gold));
+            opacity: 0.75;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--gold);
+            box-shadow: 0 14px 35px rgba(0, 229, 255, 0.12);
+        }
+
+        .service-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--border-cyan);
             display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+            color: var(--cyan);
+        }
+
+        .service-tag {
+            font-size: 0.78rem;
+            color: var(--gold);
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.22rem;
+            color: #fff;
+            margin-bottom: 0.7rem;
+            font-weight: 800;
+        }
+
+        .service-card p {
+            font-size: 0.94rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(229, 184, 66, 0.14);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.65rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.25s;
+        }
+
+        .service-link:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* Visual Portfolio Section (Using Exact img1.jpg - img5.jpg) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--cyan);
+            box-shadow: 0 15px 35px rgba(0, 229, 255, 0.18);
+        }
+
+        .project-img-box {
+            height: 225px;
+            background: #061329;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .project-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img-box img {
+            transform: scale(1.08);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(4, 11, 26, 0.8);
+            color: var(--cyan);
+            border: 1px solid var(--border-cyan);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+        }
+
+        .project-info {
+            padding: 1.35rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-meta {
+            display: inline-block;
+            font-size: 0.82rem;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .project-info h3 {
+            font-size: 1.18rem;
+            color: #fff;
+            margin-bottom: 0.45rem;
+            font-weight: 800;
+        }
+
+        .project-info p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        /* Lightbox Modal for Project Images */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 15, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            flex-direction: column;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92%;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 2px solid var(--cyan);
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+        }
+
+        .lightbox-caption {
+            margin-top: 1rem;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            background: var(--bg-card);
+            color: #fff;
+            border: 1px solid var(--gold);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
             justify-content: center;
         }
 
-        .social-link {
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 920px;
+            margin: 0 auto;
+            border-right: 3px solid var(--gold);
+            padding-right: 2rem;
+        }
+
+        .timeline-item {
+            background: linear-gradient(145deg, var(--bg-card), var(--bg-navy));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transition: transform 0.25s, border-color 0.25s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(-5px);
+            border-color: var(--cyan);
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            right: -2.55rem;
+            top: 1.6rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--cyan);
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 12px var(--cyan);
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-size: 0.88rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .timeline-item h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Secondary Section: YouTube Channel Resources & Video Attachments */
+        .resources-box {
+            background: linear-gradient(145deg, #081a38, #051024);
+            border: 1px solid var(--border-cyan);
+            border-radius: 20px;
+            padding: 2.5rem 4%;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .resource-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-gold);
+            border-radius: 14px;
+            margin-bottom: 1.1rem;
+            overflow: hidden;
+            transition: border-color 0.25s;
+        }
+
+        .resource-item[open] {
+            border-color: var(--cyan);
+        }
+
+        .resource-summary {
+            padding: 1.15rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #fff;
+            background: rgba(12, 33, 68, 0.65);
+            list-style: none;
+            gap: 1rem;
+        }
+
+        .resource-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .resource-badge {
+            background: rgba(0, 229, 255, 0.14);
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+            padding: 0.25rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .resource-body {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .instructions-banner {
+            background: rgba(255, 140, 0, 0.12);
+            border-right: 4px solid var(--amber);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.94rem;
+            color: #fff;
+        }
+
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .prompt-card {
+            background: #061329;
+            border: 1px solid var(--border-cyan);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .prompt-card h4 {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .prompt-text {
+            background: #020710;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 0.8rem;
+            font-size: 0.84rem;
+            color: #cbd5e1;
+            max-height: 155px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-bottom: 0.9rem;
+            font-family: 'Tajawal', monospace;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--cyan), #00acc1);
+            color: var(--bg-dark);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            color: #fff;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 1500;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.92rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--metallic-silver);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            font-weight: 600;
-            font-size: 1.1rem;
+            gap: 8px;
+            transition: transform 0.25s;
         }
 
-        .social-link:hover {
-            color: var(--primary-neon);
+        .floating-wa:hover {
+            transform: scale(1.06);
         }
 
-        .social-icon {
-            stroke: var(--primary-neon);
+        /* Footer */
+        footer {
+            background: #020712;
+            border-top: 1px solid var(--border-gold);
+            padding: 3.5rem 5% 2rem;
+            text-align: center;
+            margin-top: 2rem;
         }
 
-        /* ==========================================================================
-           Animations
-           ========================================================================== */
-        .fade-element {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .footer-slogan {
+            color: var(--cyan);
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0.4rem 0 1.5rem;
         }
 
-        .fade-element.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
-        /* ==========================================================================
-           Responsive Design
-           ========================================================================== */
-        @media (max-width: 992px) {
-            .masonry-grid {
-                column-count: 2;
-            }
+        .copyright {
+            color: #64748B;
+            font-size: 0.86rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 1.2rem;
         }
 
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
+        @media (max-width: 880px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(15, 23, 42, 0.95);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1.5rem;
-                border-bottom: 1px solid var(--glass-border);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                transition: clip-path 0.4s ease-in-out;
+            .hero-content p {
+                text-align: center;
             }
-
-            .nav-links.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .mobile-menu-btn.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .mobile-menu-btn.active span:nth-child(2) {
-                opacity: 0;
-            }
-            .mobile-menu-btn.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .masonry-grid {
-                column-count: 1;
-            }
-
-            .timeline::before {
-                right: 15px;
-            }
-            
-            .timeline-item {
-                padding-right: 45px;
-            }
-            
-            .timeline-dot {
-                right: 6px;
-                width: 16px;
-                height: 16px;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-            .cta-button {
+            .hero-btns {
                 justify-content: center;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                width: 100%;
+                display: none;
+                margin-top: 0.8rem;
+            }
+            nav.open {
+                display: block;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem 0;
+                background: rgba(7, 22, 48, 0.95);
+                border-radius: 12px;
+                border: 1px solid var(--border-gold);
+            }
+            header {
+                flex-wrap: wrap;
+            }
+            .resource-summary {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">م. لطفي مؤمن</a>
-            <button class="mobile-menu-btn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="nav-links">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about">من أنا</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#experience">السجل المهني</a></li>
-                <li><a href="#gallery">معرض الأعمال</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Header / Hero Section -->
-    <header id="hero" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="profile-img-container fade-element">
-                <img src="profile.jpg" alt="المهندس لطفي مؤمن" class="profile-img">
+    <div id="scroll-progress"></div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <a href="#" class="brand">
+            <div class="brand-logo">NF</div>
+            <div class="brand-text">
+                <h1>م. لطفي علي مؤمن</h1>
+                <span>مكتب ومنصة نيو فيوتشر للهندسة والمساحة</span>
             </div>
-            <h1 class="metallic-text">م. لطفي علي مؤمن</h1>
-            <h2 class="subtitle">مهندس مدني ومساحة ميداني | مؤسس منصة "نيو فيوتشر"</h2>
-            <div class="cta-group fade-element">
-                <a href="https://wa.me/967773725655" class="cta-button primary" target="_blank" rel="noopener noreferrer">طلب خدمة هندسية</a>
-                <a href="https://www.youtube.com/@NewFutureEng" class="cta-button secondary yt-btn" target="_blank" rel="noopener noreferrer">
-                    <svg class="yt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2.5 7.1C2.6 5 4.5 3.5 6.7 3.5h10.6c2.2 0 4.1 1.5 4.2 3.6l.3 4.9-.3 4.9c-.1 2.1-2 3.6-4.2 3.6H6.7c-2.2 0-4.1-1.5-4.2-3.6l-.3-4.9.3-4.9z"/>
-                        <path d="m10 15 5-3-5-3v6z"/>
-                    </svg>
-                    شاهد شروحاتنا الميدانية
-                </a>
-            </div>
-        </div>
+        </a>
+        <button class="menu-toggle" onclick="document.getElementById('main-nav').classList.toggle('open')" aria-label="القائمة">☰</button>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#about" onclick="closeNav()">من أنا</a></li>
+                <li><a href="#services" onclick="closeNav()">الخدمات الهندسية</a></li>
+                <li><a href="#portfolio" onclick="closeNav()">معرض الأعمال</a></li>
+                <li><a href="#experience" onclick="closeNav()">السجل المهني</a></li>
+                <li><a href="#prompts" onclick="closeNav()">ملحقات القناة</a></li>
+                <li><a href="https://wa.me/967773725655?text=السلام%20عليكم%20باشمهندس%20لطفي،%20أود%20التواصل%20لطلب%20خدمة%20هندسية" target="_blank" class="nav-cta">طلب خدمة هندسية</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- About Me Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title">من أنا</h2>
-            <div class="about-content glass-card fade-element">
+    <!-- Hero (Official Executive Identity + Real Profile Photo profile.jpg) -->
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">🎯 دقة ميدانية • سلطة معرفية • تنفيذ احترافي</span>
+                <h2>م. لطفي علي سالم مؤمن</h2>
+                <h3>مهندس مدني واستشاري مساحة ميداني | مؤسس منصة "نيو فيوتشر"</h3>
                 <p>
-                    مهندس مدني يمني بخبرة تزيد عن 8 سنوات في التنفيذ الميداني لمشاريع الطرق والبنية التحتية. متخصص في الرفع المساحي الدقيق، وحساب الكميات، والإشراف الفني. أدمج بين صرامة الميدان وصناعة المحتوى لسد الفجوة بين التعليم الأكاديمي والواقع العملي، وكسر حاجز الخوف لدى المهندسين.
+                    مهندس مدني بخبرة عملية تزيد عن 8 سنوات في التنفيذ الميداني والإشراف الهندسي لمشاريع الطرق الجبلية والحضرية، شبكات البنية التحتية، المنشآت السكنية، ومشاريع خطوط الكهرباء. متخصص في الرفع والتوقيع المساحي الدقيق، حساب الكميات وإعداد المستخلصات، وتطوير أنظمة المكتب الفني الحديثة لسد الفجوة بين المخططات الهندسية والواقع الميداني بأعلى معايير الجودة.
                 </p>
+                <div class="hero-btns">
+                    <a href="https://wa.me/967773725655?text=السلام%20عليكم%20باشمهندس%20لطفي،%20أود%20التواصل%20لطلب%20خدمة%20أو%20استشارة%20هندسية" target="_blank" class="btn btn-gold">📐 طلب خدمة أو استشارة هندسية</a>
+                    <a href="https://www.youtube.com/@NewFutureEng" target="_blank" class="btn btn-cyan">🎬 شاهد شروحاتنا الميدانية</a>
+                    <a href="#portfolio" class="btn btn-outline">🏗️ تصفح معرض المشاريع</a>
+                </div>
+            </div>
+
+            <div class="hero-profile">
+                <div class="profile-wrapper">
+                    <div class="reticle-ring"></div>
+                    <div class="reticle-ring-inner"></div>
+                    <div class="floating-chip chip-top">⚡ خبرة ميدانية +8 سنوات</div>
+                    <div class="profile-frame">
+                        <img src="profile.jpg" alt="المهندس لطفي علي سالم مؤمن">
+                    </div>
+                    <div class="floating-chip chip-bottom">🎯 دقة مساحية وهندسية</div>
+                </div>
+                <div class="profile-caption">📍 اليمن - حضرموت | تريم</div>
             </div>
         </div>
     </section>
 
-    <!-- Paid Services Section -->
-    <section id="services" class="section services-section">
-        <div class="container">
-            <h2 class="section-title">الخدمات الهندسية والمساحية</h2>
-            <div class="services-grid">
-                <!-- Service 1: Surveying -->
-                <article class="service-card glass-card fade-element">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 1 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
+    <!-- Stats Strip -->
+    <div class="stats-bar">
+        <div class="stat-box">
+            <strong>+8 سنوات</strong>
+            <span>خبرة ميدانية وإشراف هندسي</span>
+        </div>
+        <div class="stat-box">
+            <strong>+310 كم</strong>
+            <span>مشاريع طرق وشبكات منفذة</span>
+        </div>
+        <div class="stat-box">
+            <strong>+10 سنوات</strong>
+            <span>احتراف أجهزة Total Station & Level</span>
+        </div>
+        <div class="stat-box">
+            <strong>100%</strong>
+            <span>التزام بالمواصفات الفنية والجدول الزمني</span>
+        </div>
+    </div>
+
+    <!-- Technical Skills & Engineering Arsenal -->
+    <section style="padding-top: 1.5rem; padding-bottom: 1rem;">
+        <div class="skills-container">
+            <div class="skills-title">🛠️ الترسانة التقنية والبرمجيات الهندسية المعتمدة</div>
+            <div class="skills-pills">
+                <span class="skill-pill"><span class="skill-dot"></span>AutoCAD & Civil 3D (تصميم طرق وحصر كميات)</span>
+                <span class="skill-pill"><span class="skill-dot"></span>Total Station (Leica & Sokkia)</span>
+                <span class="skill-pill"><span class="skill-dot"></span>ETABS & SAFE & CSI Column (تصميم إنشائي)</span>
+                <span class="skill-pill"><span class="skill-dot"></span>إعداد وتدقيق المستخلصات الهندسية</span>
+                <span class="skill-pill"><span class="skill-dot"></span>Primavera & إدارة المشاريع</span>
+                <span class="skill-pill"><span class="skill-dot"></span>أتمتة التقارير والمكاتب الفنية (Python & AI)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Services -->
+    <section id="services">
+        <div class="section-header">
+            <h2>الخدمات <span>الهندسية والمساحية</span></h2>
+            <p>حلول ميدانية ومكتبية متكاملة للمقاولين، المكاتب الهندسية، والشركات باحترافية وموثوقية تضمن سلامة التنفيذ والحسابات المالية.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg>
                     </div>
+                    <span class="service-tag">🎯 أعمال المساحة الميدانية</span>
                     <h3>الرفع المساحي الطبوغرافي الدقيق</h3>
-                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
-                </article>
-                <!-- Service 2: Civil Engineering -->
-                <article class="service-card glass-card fade-element">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    <p>رفع مساحي تفصيلي للأراضي، المسارات الجبلية، والعقبات وإعداد المخططات الكنتورية والطبوغرافية بأعلى دقة.</p>
+                </div>
+                <a href="https://wa.me/967773725655?text=السلام%20عليكم%20م.%20لطفي،%20أود%20طلب%20خدمة%20الرفع%20المساحي%20الطبوغرافي" target="_blank" class="service-link">طلب الخدمة عبر واتساب ⬅</a>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
                     </div>
-                    <h3>توقيع المحاور والمنشآت الهندسية بالموقع</h3>
-                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
-                </article>
-                <!-- Service 3: Quantity Surveying -->
-                <article class="service-card glass-card fade-element">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                    <span class="service-tag">📍 التوقيع الهندسي بالموقع</span>
+                    <h3>توقيع المحاور والمنشآت والمسارات</h3>
+                    <p>توقيع محاور المباني، القواعد، مسارات الطرق، ومواقع أعمدة وشبكات الكهرباء والصرف الصحي وفق المخططات المعتمدة.</p>
+                </div>
+                <a href="https://wa.me/967773725655?text=السلام%20عليكم%20م.%20لطفي،%20أود%20طلب%20خدمة%20توقيع%20المحاور%20والمنشآت" target="_blank" class="service-link">طلب الخدمة عبر واتساب ⬅</a>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
                     </div>
-                    <h3>حساب كميات الحفر والردم والطبقات الإنشائية</h3>
-                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
-                </article>
-                <!-- Service 4: Consulting -->
-                <article class="service-card glass-card fade-element">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0"/><path d="M14 6h0a6 6 0 0 1 6 6v3"/></svg>
+                    <span class="service-tag">📐 المكتب الفني والمستخلصات</span>
+                    <h3>حساب الكميات وتصفية المستخلصات</h3>
+                    <p>حساب كميات الحفر والردم والطبقات الإنشائية والأسفلتية ببرنامج Civil 3D، وإعداد وتدقيق المستخلصات الهندسية للمقاولين.</p>
+                </div>
+                <a href="https://wa.me/967773725655?text=السلام%20عليكم%20م.%20لطفي،%20أود%20طلب%20خدمة%20حساب%20الكميات%20والمستخلصات" target="_blank" class="service-link">طلب الخدمة عبر واتساب ⬅</a>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3>الاستشارات الفنية لمشاريع البنية التحتية</h3>
-                    <a href="https://wa.me/967773725655" class="service-btn" target="_blank" rel="noopener noreferrer">طلب الخدمة</a>
-                </article>
+                    <span class="service-tag">🛣️ الاستشارات وأنظمة المشاريع</span>
+                    <h3>الاستشارات الفنية وتطوير أنظمة التقارير</h3>
+                    <p>الاستشارات الفنية لمشاريع الطرق والبنية التحتية، وتصميم منظومات أتمتة التقارير الفنية ولوحات التتبع لإدارة المشاريع بذكاء.</p>
+                </div>
+                <a href="https://wa.me/967773725655?text=السلام%20عليكم%20م.%20لطفي،%20أود%20طلب%20استشارة%20فنية%20أو%20تطوير%20نظام%20تقارير" target="_blank" class="service-link">طلب الخدمة عبر واتساب ⬅</a>
             </div>
         </div>
     </section>
 
-    <!-- Experience & Projects Section -->
-    <section id="experience" class="section experience-section">
-        <div class="container">
-            <h2 class="section-title">السجل المهني والمشاريع</h2>
-            <div class="timeline">
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">يوليو 2025 – فبراير 2026</span>
-                        <h3>مهندس مشروع ومساح | مؤسسة علي حسين مبارك وإخوانه</h3>
-                        <p>الإشراف الفني والميداني الشامل على مشروع سفلتة طريق عقبة الحبيب شهاب الدين - المرحلة الأولى بمديرية تريم.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">أكتوبر 2023 – مايو 2025</span>
-                        <h3>مهندس استشاري مساحة | صندوق صيانة الطرق - عدن</h3>
-                        <p>استشاري مساحة في مشروع تأهيل الشوارع الحضرية بمديرية سيئون.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">فبراير 2023 – سبتمبر 2023</span>
-                        <h3>مهندس مشروع | محافظة حضرموت - المكلا</h3>
-                        <p>إدارة وتنفيذ مشروع بناء عمارة سكنية.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">مارس 2021 – يناير 2023</span>
-                        <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
-                        <p>سفلتة طريق عقبة رحاب – الفرضحة بطول 33كم في تضاريس جبلية وعرة.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">نوفمبر 2019 – مارس 2021</span>
-                        <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
-                        <p>سفلتة طريق عقبة كتبة – السلاسل - حوارم المرحلة الأولى بطول 14كم.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">أكتوبر 2018 – نوفمبر 2019</span>
-                        <h3>مهندس تصميم ومساحة وإشراف | مجموعة العمودي للمقاولات</h3>
-                        <p>الصيانة الطارئة لطريق عصم – ثمود – رماه بطول 260كم.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">أغسطس 2018 – نوفمبر 2018</span>
-                        <h3>مهندس تصميم ومساحة وإشراف | عمل خاص</h3>
-                        <p>مشروع الصرف الصحي الاسعافي لمسجد البقيع.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">أبريل 2018 – يوليو 2018</span>
-                        <h3>مهندس مساح | لجنة محلية</h3>
-                        <p>مشروع الصرف الصحي الاسعافي بمدينة تريم بطول 4كم.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-element">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">2017 – مارس 2018</span>
-                        <h3>مهندس مشرف ومصمم ومساح | مكتب تكنو عمارة للاستشارات الهندسية</h3>
-                        <p>وتدريب المكاتب على أجهزة Total Station.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Visual Portfolio Section (Mapped to Exact Uploaded Images img1.jpg - img5.jpg) -->
+    <section id="portfolio">
+        <div class="section-header">
+            <h2>معرض <span>الأعمال الميدانية</span></h2>
+            <p>توثيق حي من أرض الميدان لأبرز مشاريع الطرق الجبلية والشوارع الحضرية والبنية التحتية (اضغط على أي صورة لتكبيرها).</p>
         </div>
-    </section>
 
-    <!-- Field Gallery Section -->
-    <section id="gallery" class="section gallery-section">
-        <div class="container">
-            <h2 class="section-title">معرض الأعمال الميدانية</h2>
-            <div class="masonry-grid">
-                <div class="masonry-item fade-element">
-                    <img src="img1.jpg" alt="مشروع عقبة كتبة" loading="lazy">
-                    <div class="gallery-caption">مشروع عقبة كتبة</div>
-                </div>
-                <div class="masonry-item fade-element">
-                    <img src="img2.jpg" alt="طريق عصم - ثمود - رماه" loading="lazy">
-                    <div class="gallery-caption">طريق عصم - ثمود - رماه</div>
-                </div>
-                <div class="masonry-item fade-element">
+        <div class="portfolio-grid">
+            <!-- Project 1: img3.jpg -->
+            <div class="project-card">
+                <div class="project-img-box" onclick="openLightbox('img3.jpg', 'مشروع سفلتة طريق عقبة الحبيب شهاب الدين - تريم')">
+                    <span class="zoom-hint">🔍 تكبير الصورة</span>
                     <img src="img3.jpg" alt="مشروع سفلتة طريق عقبة شهاب" loading="lazy">
-                    <div class="gallery-caption">مشروع سفلتة طريق عقبة شهاب</div>
                 </div>
-                <div class="masonry-item fade-element">
+                <div class="project-info">
+                    <div>
+                        <span class="project-meta">مديرية تريم • إشراف فني ومساحي</span>
+                        <h3>مشروع سفلتة طريق عقبة شهاب</h3>
+                        <p>الإشراف الفني والميداني الشامل وإدارة أعمال المساحة الدقيقة للمرحلة الأولى بمديرية تريم.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: img5.jpg -->
+            <div class="project-card">
+                <div class="project-img-box" onclick="openLightbox('img5.jpg', 'مشروع تأهيل الشوارع الحضرية بمديرية سيئون')">
+                    <span class="zoom-hint">🔍 تكبير الصورة</span>
+                    <img src="img5.jpg" alt="الشوارع الحضرية - سيئون" loading="lazy">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-meta">صندوق صيانة الطرق • استشاري مساحة</span>
+                        <h3>الشوارع الحضرية - سيئون</h3>
+                        <p>مراجعة وتدقيق المخططات المساحية المعقدة وحل تداخلات المناسيب والشبكة الطرقية الحضرية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: img4.jpg -->
+            <div class="project-card">
+                <div class="project-img-box" onclick="openLightbox('img4.jpg', 'مشروع سفلتة طريق عقبة رحاب – الفرضحة بطول 33 كم')">
+                    <span class="zoom-hint">🔍 تكبير الصورة</span>
                     <img src="img4.jpg" alt="مشروع عقبة رحاب" loading="lazy">
-                    <div class="gallery-caption">مشروع عقبة رحاب</div>
                 </div>
-                <div class="masonry-item fade-element">
-                    <img src="img5.jpg" alt="تأهيل الشوارع الحضرية بمدينة سيئون" loading="lazy">
-                    <div class="gallery-caption">الشوارع الحضرية - سيئون</div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-meta">بطول 33 كم • تضاريس جبلية وعرة</span>
+                        <h3>مشروع طريق عقبة رحاب</h3>
+                        <p>قيادة أعمال الهندسة والمساحة وتوقيع المسارات وحساب الكميات المنفذة بدقة متناهية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: img1.jpg -->
+            <div class="project-card">
+                <div class="project-img-box" onclick="openLightbox('img1.jpg', 'مشروع سفلتة طريق عقبة كتبة – السلاسل - حوارم بطول 14 كم')">
+                    <span class="zoom-hint">🔍 تكبير الصورة</span>
+                    <img src="img1.jpg" alt="مشروع عقبة كتبة" loading="lazy">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-meta">بطول 14 كم • المرحلة الأولى</span>
+                        <h3>مشروع عقبة كتبة – حوارم</h3>
+                        <p>الإشراف المباشر على أعمال الردميات والطبقات الترابية والأسفلتية وضبط استواء المسارات.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: img2.jpg -->
+            <div class="project-card">
+                <div class="project-img-box" onclick="openLightbox('img2.jpg', 'مشروع الصيانة الطارئة لطريق عصم – ثمود – رماه بطول 260 كم')">
+                    <span class="zoom-hint">🔍 تكبير الصورة</span>
+                    <img src="img2.jpg" alt="طريق عصم - ثمود - رماه" loading="lazy">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-meta">بطول 260 كم • صيانة طارئة ومسوحات</span>
+                        <h3>طريق عصم - ثمود - رماه</h3>
+                        <p>إجراء المسوحات الميدانية لتقييم الأضرار وتصميم الحلول الهندسية العاجلة والإشراف على الترميم.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Career Record Timeline -->
+    <section id="experience">
+        <div class="section-header">
+            <h2>السجل <span>المهني والخبرات</span></h2>
+            <p>مسيرة عملية متدرجة في قيادة المشاريع الهندسية والمساحية مع كبرى المؤسسات والجهات الاستشارية.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">يوليو 2025 – فبراير 2026</span>
+                <h3>مهندس مشروع ومساح | مؤسسة علي حسين مبارك وإخوانه</h3>
+                <p>الإشراف الفني والميداني الشامل وإدارة أعمال المساحة الدقيقة على مشروع سفلتة طريق عقبة الحبيب شهاب الدين - المرحلة الأولى بمديرية تريم.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">أكتوبر 2023 – مايو 2025</span>
+                <h3>مهندس استشاري مساحة | صندوق صيانة الطرق - عدن</h3>
+                <p>استشاري مساحة في مشروع تأهيل الشوارع الحضرية بمديرية سيئون، ومراجعة وتدقيق المخططات المساحية ومطابقة التنفيذ للمواصفات الفنية.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">فبراير 2023 – سبتمبر 2023</span>
+                <h3>مهندس مشروع | محافظة حضرموت - المكلا</h3>
+                <p>إدارة وتنفيذ مشروع بناء عمارة سكنية بالمكلا، والإشراف على مراقبة الجودة والتشطيبات النهائية وفق المعايير الهندسية.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">مارس 2021 – يناير 2023</span>
+                <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
+                <p>قيادة أعمال الهندسة والمساحة وحساب الكميات وإعداد التقارير الدورية في مشروع سفلتة طريق عقبة رحاب – الفرضحة بطول 33 كم في تضاريس جبلية وعرة.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">نوفمبر 2019 – مارس 2021</span>
+                <h3>مهندس مشروع ومساح | مجموعة العمودي للمقاولات</h3>
+                <p>الإشراف المباشر على أعمال الردميات والطبقات الترابية والأسفلتية وأعمال المساحة في مشروع سفلتة طريق عقبة كتبة – السلاسل - حوارم المرحلة الأولى بطول 14 كم.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">أكتوبر 2018 – نوفمبر 2019</span>
+                <h3>مهندس تصميم ومساحة وإشراف | مجموعة العمودي للمقاولات</h3>
+                <p>المسوحات الميدانية وتقييم الأضرار وتصميم الحلول الهندسية العاجلة لمشروع الصيانة الطارئة لطريق عصم – ثمود – رماه بطول 260 كم.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">أغسطس 2018 – نوفمبر 2018</span>
+                <h3>مهندس تصميم ومساحة وإشراف | عمل خاص</h3>
+                <p>تصميم وإشراف وأعمال المساحة لمشروع الصرف الصحي الإسعافي لمسجد البقيع بمنطقة الردود.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">أبريل 2018 – يوليو 2018</span>
+                <h3>مهندس مساح | لجنة محلية</h3>
+                <p>قيادة الأعمال المساحية لمشروع الصرف الصحي الإسعافي بمدينة تريم بطول 4 كم.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">2017 – مارس 2018</span>
+                <h3>مهندس مشرف ومصمم ومساح | مكتب تكنو عمارة للاستشارات الهندسية</h3>
+                <p>الإشراف والتصميم الهندسي وتدريب المكاتب والكوادر الهندسية على استخدام أجهزة محطة الأرصاد المتكاملة (Total Station).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Hub: Channel Video Resources (Sub-section linked to videos) -->
+    <section id="prompts">
+        <div class="resources-box">
+            <div class="section-header" style="margin-bottom: 1.8rem;">
+                <h2>📂 ملحقات وأدوات <span>قناة نيو فيوتشر</span></h2>
+                <p>ركن فرعي مخصص لمتابعي القناة لتحميل الأدوات، القوالب، والأوامر البرمجية المشروحة في الفيديوهات التعليمية.</p>
+            </div>
+
+            <!-- Video Resource 1: Automation Prompts (Collapsible) -->
+            <details class="resource-item" id="automation-details">
+                <summary class="resource-summary">
+                    <span>⚡ ملحقات فيديو: أتمتة التقارير اليومية والدورية وطلبات الاستلام (الأوامر الـ 4 الجاهزة للنسخ)</span>
+                    <span class="resource-badge">اضغط للفتح والنسخ ⬇</span>
+                </summary>
+                <div class="resource-body">
+                    <div class="instructions-banner">
+                        <strong>💡 طريقة الاستخدام الصحيحة:</strong> افتح محادثة جديدة في أي أداة ذكاء اصطناعي (Gemini أو ChatGPT أو Claude)، ثم انسخ <strong>الأمر الأول</strong> وأرسله، وانتظر حتى يجيب، ثم أرسل <strong>الأمر الثاني</strong> بالتسلسل حتى يكتمل نظامك بدون أخطاء برمجية.
+                    </div>
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div>
+                                <h4>1. الأمر الأول: تأسيس ملفات الإكسل</h4>
+                                <div class="prompt-text" id="p1">أريدك أن تتصرف كمهندس أتمتة بيانات خبير (Python & Excel Automation Expert). 
+هدفي هو بناء نظام أتمتة محلي (يعمل بدون إنترنت على جهازي) لإدارة تقارير مشروع هندسي أو إداري متكرر. يتكون النظام من ملفات Excel كقواعد بيانات وقوالب، وسكربتات Python للمعالجة، وملف Bat كواجهة تشغيل.
+
+في هذه المرحلة الأولى، أريدك أن تصمم لي هيكل "ملفات الإكسل" المطلوبة فقط، بناءً على القواعد التالية لتجنب أخطاء التنسيق:
+1. ملف الإدخال اليومي (daily_input.xlsx): يحتوي على جدول بسيط لإدخال أعمال اليوم (البند، الموقع، الكمية، الحالة، الملاحظات) ليكون هو واجهة الإدخال الوحيدة.
+2. ملف التقرير اليومي (daily_report_master.xlsx): قالب جاهز ومنسق. (ملاحظة هامة جداً: يجب أن يُبنى القالب بخلايا مدمجة واضحة، ولا تسمح لكود البايثون لاحقاً بتغيير ارتفاع الصفوف أو عرض الأعمدة حتى لا تتداخل الصور والنصوص).
+3. لوحة التتبع الشاملة (Master Tracker): ملف إكسل يحتوي على 3 شيتات (لوحة التتبع التراكمية، ملخص الإنجاز Dashboard، وسجل تواريخ الإنجاز History Log).
+
+اكتب لي هيكل هذه الملفات وأسماء الأعمدة المطلوبة فيها لتناسب مشروعي، ولا تكتب أي كود بايثون في ردك هذا، فقط صمم لي قواعد البيانات وأسماء الشيتات.</div>
+                            </div>
+                            <button class="copy-btn" onclick="copyPrompt('p1', this)">📋 نسخ الأمر الأول</button>
+                        </div>
+
+                        <div class="prompt-card">
+                            <div>
+                                <h4>2. الأمر الثاني: محرك التقرير اليومي والتتبع</h4>
+                                <div class="prompt-text" id="p2">ممتاز. الآن سنكتب كود البايثون الأساسي (generate_report.py) الذي سيقوم بقراءة البيانات من "daily_input.xlsx" ويحدث "التقرير اليومي" و"لوحة التتبع" معاً بضغطة زر.
+لتجنب الأخطاء البرمجية والهندسية، يجب أن يلتزم الكود بالآتي نصاً:
+1. الدمج الذكي (Smart Batch Grouping): إذا تم إدخال نفس البند في عدة مواقع مختلفة، يجب أن يدمجها الكود في سطر واحد داخل التقرير اليومي ويجمع الكميات، حتى لا يتكرر اسم البند.
+2. إدراج الصور بدقة: استخدم أداة TwoCellAnchor من مكتبة openpyxl لإدراج الصور فوق الخلايا المحددة بدقة الميلي متر، ولا تستخدم طرق الإدراج البسيطة التي تسبب تمدد أو تشوه الصور.
+3. التحديث التراكمي للوحة التتبع: قم بتحديث حالة العناصر في لوحة التتبع، وتوثيق تاريخ اليوم ورقم التقرير لكل بند في شيت "سجل التواريخ (History Log)".
+4. الأرشفة الذكية: بعد توليد التقرير وإنشاء نسخة PDF باستخدام win32com.client، يجب أن يقوم الكود بنقل صور اليوم من مجلد photos إلى مجلد Archive منظم بالتاريخ، لحماية الملفات من التضخم.
+5. التنبيهات (Hold Points): أضف ميزة تُصدر تحذيراً (Warning) في شاشة الدوس إذا تم تجاوز تسلسل منطقي (مثلاً: محاولة تسجيل بند "الصب" لبند حالته السابقة "لم يبدأ").
+
+اكتب كود (generate_report.py) متضمناً كافة هذه الميزات والاعتبارات.</div>
+                            </div>
+                            <button class="copy-btn" onclick="copyPrompt('p2', this)">📋 نسخ الأمر الثاني</button>
+                        </div>
+
+                        <div class="prompt-card">
+                            <div>
+                                <h4>3. الأمر الثالث: التقارير الدورية والـ RFI</h4>
+                                <div class="prompt-text" id="p3">الآن نحتاج إلى سكربتين إضافيين لتكتمل المنظومة:
+الأول: periodic_report.py (للتقارير الأسبوعية والشهرية).
+الثاني: generate_rfi.py (لتوليد نماذج وطلبات الفحص أو التسليم RFI).
+
+يجب أن تتلافى الأخطاء التقنية التالية بدقة:
+1. في periodic_report.py: استورد جميع المكتبات المطلوبة في أول سطر دون استثناء لتجنب خطأ NameError، وتحديداً:
+from datetime import datetime, timedelta
+from copy import copy
+from openpyxl.formatting.rule import DataBarRule
+from openpyxl.worksheet.pagebreak import Break
+2. في التقارير الدورية: اجعل الكود يستخرج "سجل المخاطر والتأخيرات" تلقائياً من الملاحظات المسجلة في شيت "سجل التواريخ" خلال فترة التقرير.
+3. في generate_rfi.py: عند تصميم قالب الإكسل أو الوورد لطلبات الفحص، ابنه على شبكة موحدة (مثلاً 12 عموداً قياسياً) لتجنب انقسام الخلايا أو تشوه الجداول (لا تستخدم جداول متداخلة).
+4. اجعل سكربت الـ RFI يبحث في لوحة التتبع عن البنود التي حالتها "مكتمل"، ويضعها في نموذج PDF، ثم يسألك إذا كنت تريد تحويل حالتها إلى "مكتمل ومستلم" لمنع تكرارها في الطلبات القادمة.
+
+اكتب الأكواد المطلوبة مع مراعاة هذه الشروط الصارمة.</div>
+                            </div>
+                            <button class="copy-btn" onclick="copyPrompt('p3', this)">📋 نسخ الأمر الثالث</button>
+                        </div>
+
+                        <div class="prompt-card">
+                            <div>
+                                <h4>4. الأمر الرابع: لوحة التحكم الشاملة</h4>
+                                <div class="prompt-text" id="p4">أخيراً، أريد إنشاء واجهة تشغيل للمنظومة بالكامل عبارة عن ملف باتش (Main_Menu.bat) يجمع كل السكربتات السابقة في قائمة خيارات أو واجهة رسومية أنيقة.
+
+لتجنب أخطاء نظام الويندوز وإغلاق الشاشة المفاجئ، يجب الالتزام بالآتي:
+1. دعم اللغة العربية: يجب أن يبدأ الملف بالأمر chcp 65001 >nul لضمان عدم ظهور الحروف العربية كرموز غريبة.
+2. حماية المتغيرات: لا تستخدم علامة & داخل جمل الطباعة echo لأن الويندوز يعتبرها أمراً لتشغيل برنامج جديد وتسبب خطأ.
+3. النسخ الاحتياطي التلقائي: قبل تنفيذ أي خيار من القائمة، يجب أن يقوم السكربت بنسخ لوحة التتبع وملف الطلبات إلى مجلد فرعي Archive\Backups كحماية للبيانات.
+4. الحقن الديناميكي للمكتبات: عند تشغيل خيار التقارير الأسبوعية والشهرية، قم بتمرير أمر بايثون يحقن مكتبات (timedelta, DataBarRule) في الذاكرة لتجنب أي تعارض إذا نسي المستخدم تثبيتها في الملف الرئيسي.
+5. فصل الأوامر: استخدم نظام goto لعمل الأوامر خارج قائمة الإدخال، وضع pause بعد كل عملية ليتسنى للمستخدم قراءة النتائج قبل العودة للقائمة الرئيسية.
+
+اكتب كود Main_Menu.bat كاملاً واحترافياً.</div>
+                            </div>
+                            <button class="copy-btn" onclick="copyPrompt('p4', this)">📋 نسخ الأمر الرابع</button>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Video Resource 2: Surveying Series -->
+            <details class="resource-item">
+                <summary class="resource-summary">
+                    <span>🎯 سلسلة أسرار المساحة الميدانية: قبل أن تضغط أي زر (شروحات الفيديو)</span>
+                    <span class="resource-badge">مشاهدة السلسلة ⬇</span>
+                </summary>
+                <div class="resource-body">
+                    <p style="margin-bottom:1rem;color:var(--text-muted);">لمتابعة سلسلة أساسيات المساحة الميدانية واحتراف جهاز التوتال ستيشن من المرحلة الصفرية على قناة نيو فيوتشر:</p>
+                    <a href="https://www.youtube.com/watch?v=WnrXinZzxZg" target="_blank" class="btn btn-gold">▶️ مشاهدة الحلقة الأولى: ما هو التوتال ستيشن؟ (من المتر إلى الليزر)</a>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <img id="lightbox-img" src="" alt="صورة المشروع">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Floating WhatsApp CTA -->
+    <a href="https://wa.me/967773725655?text=السلام%20عليكم%20باشمهندس%20لطفي،%20أود%20التواصل%20معكم" target="_blank" class="floating-wa">
+        💬 تواصل مباشر
+    </a>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content fade-element">
-                <p class="copyright">© 2026 مكتب وقناة نيو فيوتشر الهندسية. جميع الحقوق محفوظة.</p>
-                <div class="social-links">
-                    <a href="https://youtube.com/@NewFutureEng" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2.5 7.1C2.6 5 4.5 3.5 6.7 3.5h10.6c2.2 0 4.1 1.5 4.2 3.6l.3 4.9-.3 4.9c-.1 2.1-2 3.6-4.2 3.6H6.7c-2.2 0-4.1-1.5-4.2-3.6l-.3-4.9.3-4.9z"/>
-                            <path d="m10 15 5-3-5-3v6z"/>
-                        </svg>
-                        YouTube: @NewFutureEng
-                    </a>
-                    <a href="mailto:A.LOTFE.Z@gmail.com" class="social-link">
-                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                        Email: A.LOTFE.Z@gmail.com
-                    </a>
-                </div>
-            </div>
+    <footer>
+        <h2>م. لطفي علي سالم مؤمن | منصة نيو فيوتشر</h2>
+        <div class="footer-slogan">"نضبط الرؤية، ونبدأ."</div>
+        <div class="footer-contacts">
+            <a href="https://wa.me/967773725655" target="_blank" class="btn btn-gold">💬 واتساب: 00967773725655</a>
+            <a href="https://www.youtube.com/@NewFutureEng" target="_blank" class="btn btn-cyan">▶️ قناة نيو فيوتشر على يوتيوب</a>
+            <a href="mailto:A.LOTFE.Z@gmail.com" class="btn btn-outline">✉️ A.LOTFE.Z@gmail.com</a>
+        </div>
+        <div class="copyright">
+            © 2026 جميع الحقوق محفوظة للمهندس لطفي علي سالم مؤمن | حضرموت - تريم
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Mobile Menu Toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    const isActive = navLinks.classList.toggle('active');
-                    mobileMenuBtn.classList.toggle('active');
-                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
-                });
+        // Scroll progress bar & header shadow
+        window.addEventListener("scroll", () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
 
-                // Close menu when clicking a link
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                    });
-                });
+            const header = document.getElementById("main-header");
+            if (winScroll > 40) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
             }
-
-            // 2. Navbar Scroll Effect
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // 3. Smooth Scrolling for Navigation Links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    
-                    if (target) {
-                        // Adjust scroll position for fixed navbar
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // 4. Scroll Reveal Animations using Intersection Observer
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const fadeObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        // Optional: Stop observing once revealed
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            const fadeElements = document.querySelectorAll('.fade-element');
-            fadeElements.forEach(el => {
-                fadeObserver.observe(el);
-            });
-
-            // 5. ScrollSpy - Highlight Active Section in Navbar
-            const sections = document.querySelectorAll('.section');
-            const navItems = document.querySelectorAll('.nav-links a');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const scrollY = window.pageYOffset;
-
-                sections.forEach(section => {
-                    const sectionHeight = section.offsetHeight;
-                    // Add navbar height + some buffer for detection
-                    const sectionTop = section.offsetTop - 150; 
-                    const id = section.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        current = id;
-                    }
-                });
-
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${current}`) {
-                        item.classList.add('active');
-                    }
-                });
-            });
         });
+
+        function closeNav() {
+            document.getElementById("main-nav").classList.remove("open");
+        }
+
+        // Auto-open prompts accordion if visitor arrives via #prompts link
+        function checkHash() {
+            if (window.location.hash === "#prompts") {
+                const details = document.getElementById("automation-details");
+                if (details) details.open = true;
+            }
+        }
+        window.addEventListener("load", checkHash);
+        window.addEventListener("hashchange", checkHash);
+
+        // Copy prompt function
+        function copyPrompt(elementId, btnElement) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "✅ تم النسخ بنجاح!";
+                btnElement.classList.add("copied");
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove("copied");
+                }, 2500);
+            });
+        }
+
+        // Lightbox functions for project gallery
+        function openLightbox(imgSrc, captionText) {
+            document.getElementById("lightbox-img").src = imgSrc;
+            document.getElementById("lightbox-caption").innerText = captionText;
+            document.getElementById("lightbox").classList.add("open");
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").classList.remove("open");
+        }
     </script>
 </body>
 </html>
